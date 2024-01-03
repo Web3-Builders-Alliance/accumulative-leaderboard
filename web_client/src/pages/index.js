@@ -13,7 +13,7 @@ const HomePage = (props) => {
   return (
     <>
       <Head>
-        <title>{`'Cade BONK or dETH`}</title>
+        <title>{`BONK or dETH`}</title>
         <meta name="description" content="BONK or dETH" />
       </Head>
       <section className="text-gray-600 body-font relative bg-[url('/kn.jpg')] min-h-screen">
