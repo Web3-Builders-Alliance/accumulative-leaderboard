@@ -4,13 +4,13 @@ skip-lint = false
 [programs.localnet]
 acumulative_leaderboard = "Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS"
 [programs.devnet]
-acumulative_leaderboard = "13a1hpD8C4Bgf7pV1dK7rniz5nNKAXsVSg6JwAXoNewn"
+acumulative_leaderboard = "9ukqpC44ttCKHvbMtVSVJ169fFGL28eWKmDSe8v7dytP"
 
 [registry]
 url = "https://api.apr.dev"
 
 [provider]
-cluster = "Devnet"
+cluster = "devnet"
 wallet = "wallet.json"
 
 [scripts]

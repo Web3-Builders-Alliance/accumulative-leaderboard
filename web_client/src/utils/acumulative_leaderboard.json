@@ -107,19 +107,18 @@
       "name": "PlayEvent",
       "fields": [
         {
-          "name": "address",
-          "type": "publicKey",
-          "index": false
-        },
-        {
-          "name": "plays",
-          "type": "u64",
+          "name": "leaderboard",
+          "type": {
+            "vec": {
+              "defined": "UserStruct"
+            }
+          },
           "index": false
         }
       ]
     }
   ],
   "metadata": {
-    "address": "13a1hpD8C4Bgf7pV1dK7rniz5nNKAXsVSg6JwAXoNewn"
+    "address": "9ukqpC44ttCKHvbMtVSVJ169fFGL28eWKmDSe8v7dytP"
   }
 }

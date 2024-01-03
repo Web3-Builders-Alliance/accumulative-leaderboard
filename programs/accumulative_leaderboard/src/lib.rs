@@ -1,5 +1,5 @@
 use anchor_lang::prelude::*;
-declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
+declare_id!("9ukqpC44ttCKHvbMtVSVJ169fFGL28eWKmDSe8v7dytP");
 
 #[program]
 pub mod acumulative_leaderboard {
@@ -12,8 +12,7 @@ pub mod acumulative_leaderboard {
     }
 
     pub fn play(ctx: Context<Play>) -> Result<()> {
-
-        ctx.accounts.user.plays += 1;
+        ctx.accounts.user.plays = ctx.accounts.user.plays.checked_add(1).unwrap();
 
         let position = ctx
             .accounts
@@ -25,13 +24,15 @@ pub mod acumulative_leaderboard {
         if position.is_some() {
             let index = position.unwrap();
             ctx.accounts.global.leaderboard[index].plays = ctx.accounts.user.plays;
-
         } else if ctx.accounts.global.leaderboard.len() < 10
             || ctx.accounts.user.plays
                 > ctx.accounts.global.leaderboard[ctx.accounts.global.leaderboard.len() - 1].plays
         {
-            if ctx.accounts.global.leaderboard.len() > 0 && ctx.accounts.user.plays
-                > ctx.accounts.global.leaderboard[ctx.accounts.global.leaderboard.len() - 1].plays {
+            if !ctx.accounts.global.leaderboard.is_empty()
+                && ctx.accounts.user.plays
+                    > ctx.accounts.global.leaderboard[ctx.accounts.global.leaderboard.len() - 1]
+                        .plays
+            {
                 ctx.accounts.global.leaderboard.pop();
             }
             let user_obj = UserStruct {
@@ -51,8 +52,7 @@ pub mod acumulative_leaderboard {
             .sort_by(|a, b| b.plays.cmp(&a.plays));
 
         emit!(PlayEvent {
-            address: ctx.accounts.payer.key(),
-            plays: ctx.accounts.user.plays,
+            leaderboard: ctx.accounts.global.leaderboard.clone()
         });
         Ok(())
     }
@@ -105,6 +105,5 @@ pub struct UserStruct {
 
 #[event]
 pub struct PlayEvent {
-    pub address: Pubkey,
-    pub plays: u64,
+    pub leaderboard: Vec<UserStruct>,
 }

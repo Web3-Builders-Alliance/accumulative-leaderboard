@@ -23,7 +23,6 @@ type ProgramProps = {
 };
 
 export const useProgram = ({ connection, wallet }: ProgramProps) => {
-  console.log({ connection, wallet });
   const [program, setProgram] = useState<anchor.Program<anchor.Idl>>();
 
   useEffect(() => {

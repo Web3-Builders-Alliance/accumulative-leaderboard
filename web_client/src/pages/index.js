@@ -3,6 +3,7 @@ import Head from "next/head";
 import { useProgram } from "../utils/useProgram";
 import * as web3 from "@solana/web3.js";
 import Dice from "../components/Dice";
+import Leaderboard from "../components/leaderboard";
 
 const HomePage = (props) => {
   const wallet = useAnchorWallet();
@@ -12,12 +13,12 @@ const HomePage = (props) => {
   return (
     <>
       <Head>
-        <title>{`'Cade BONK or DEATH`}</title>
-        <meta name="description" content="BONK or DEATH" />
+        <title>{`'Cade BONK or dETH`}</title>
+        <meta name="description" content="BONK or dETH" />
       </Head>
-      <section className="text-gßray-600 body-font relative bg-[url('/kn.jpg')] min-h-screen">
+      <section className="text-gray-600 body-font relative bg-[url('/kn.jpg')] min-h-screen">
         <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
-        <h1 className="text-center w-full">DETH is temporary, Solana is inevitable</h1>
+        <h1 className="text-center w-full text-white">DETH is temporary, Solana is inevitable</h1>
         </div>
         <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
           <div className=" w-full rounded-lg overflow-hidden ">
@@ -53,6 +54,7 @@ const HomePage = (props) => {
             </div>
           </div>
         </div>
+        <Leaderboard />
       </section>
     </>
   );
