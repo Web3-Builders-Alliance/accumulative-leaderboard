@@ -1,0 +1,125 @@
+{
+  "version": "0.1.0",
+  "name": "acumulative_leaderboard",
+  "instructions": [
+    {
+      "name": "initialize",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "global",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "play",
+      "accounts": [
+        {
+          "name": "payer",
+          "isMut": true,
+          "isSigner": true
+        },
+        {
+          "name": "user",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "global",
+          "isMut": true,
+          "isSigner": false
+        },
+        {
+          "name": "systemProgram",
+          "isMut": false,
+          "isSigner": false
+        }
+      ],
+      "args": []
+    }
+  ],
+  "accounts": [
+    {
+      "name": "Leaderboard",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "authority",
+            "type": "publicKey"
+          },
+          {
+            "name": "leaderboard",
+            "type": {
+              "vec": {
+                "defined": "UserStruct"
+              }
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "User",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "plays",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "types": [
+    {
+      "name": "UserStruct",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "address",
+            "type": "publicKey"
+          },
+          {
+            "name": "plays",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ],
+  "events": [
+    {
+      "name": "PlayEvent",
+      "fields": [
+        {
+          "name": "address",
+          "type": "publicKey",
+          "index": false
+        },
+        {
+          "name": "plays",
+          "type": "u64",
+          "index": false
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "address": "13a1hpD8C4Bgf7pV1dK7rniz5nNKAXsVSg6JwAXoNewn"
+  }
+}
