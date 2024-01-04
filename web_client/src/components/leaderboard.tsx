@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useAnchorWallet, useConnection } from "@solana/wallet-adapter-react";
 import { useProgram } from "../utils/useProgram";
-import { set } from "@project-serum/anchor/dist/cjs/utils/features";
 
 const Leaderboard = (props) => {
   const wallet = useAnchorWallet();
@@ -33,14 +32,14 @@ const Leaderboard = (props) => {
   }, [program]);
 
   return (
-    <section className="text-gßray-600 body-font relative bg-[url('/kn.jpg')]">
+    <section className=" body-font relative">
       <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
         <div className="lg:w-2/3 md:w-1/2 rounded-lg overflow-hidden sm:mr-10 ">
           <div className="flex  flex-col min-h-screen">
             <h1 className="text-3xl font-bold text-white">Leaderboard</h1>
             {leaderboard?.length > 0 ? (
               <div className="text-white">
-                {leaderboard.map((player, index) => (
+                {leaderboard?.map((player, index) => (
                   <div key={index}>
                     {index + 1}. {player.address.toBase58()} -{" "}
                     {player.plays.toString()}

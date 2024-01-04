@@ -18,7 +18,7 @@ const HomePage = (props) => {
       </Head>
       <section className="text-gray-600 body-font relative bg-[url('/kn.jpg')] min-h-screen">
         <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
-        <h1 className="text-center w-full text-white">DETH is temporary, Solana is inevitable</h1>
+        <h1 className="text-center w-full text-white">dETH is temporary, Solana is inevitable</h1>
         </div>
         <div className="container px-5 py-10 mx-auto flex sm:flex-nowrap flex-wrap">
           <div className=" w-full rounded-lg overflow-hidden ">
